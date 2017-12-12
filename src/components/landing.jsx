@@ -1,19 +1,28 @@
 import React from 'react';
 import './landing.css';
+import banner from '../assets/banner.png';
 
 export default class Landing extends React.Component {
   render(){
     return (
       <div>
         <div className="header">
-          <div className="top-bar">
-            <div>Reactor</div>
-            <div>Log In</div>
+          <div className="header-content">
+            <div className="top-bar">
+              <div>Reactor</div>
+              <div>Log In</div>
+            </div>
+            <div className="welcome">
+              <h1>Hello, welcome to Reactor</h1>
+            </div>
           </div>
-          <h1>Welcome to React App</h1>
+          <img className="main_img" src={banner} alt={"banner"} />
         </div>
         <div className="2nd-section">
-          <div><h2>What We Do</h2></div>
+          <div>
+            <h2>What We Do</h2>
+          </div>
+
           <div>
             <h3>We Do</h3>
             <ul>

@@ -6,9 +6,9 @@ import Landing from './components/landing';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      // <div className="App">
         <Landing />
-      </div>
+      // </div>
     );
   }
 }
