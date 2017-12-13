@@ -67,23 +67,40 @@ export default class Landing extends React.Component {
           <h3>Maui By Air The Best Way Around The Island</h3>
           <ul>
             <li>
-              <div className="1li-img">
-                <img src={"../assets/3.png"} />
+              <div className="li-img">
+                <img src={require('../assets/3.png')} alt={'3'} />
               </div>
-              East Josianefurt
-              <p>085 Daron Via</p>
+              <div className="txt">
+                East Josianefurt
+                <p>085 Daron Via</p>
+              </div>
             </li>
             <li>
-              South Cristopherport
-              <p>162 Chandler Ville</p>
+              <div className="li-img">
+                <img src={require('../assets/4.png')} alt={'3'} />
+              </div>
+              <div className="txt">
+                South Cristopherport
+                <p>162 Chandler Ville</p>
+              </div>
             </li>
             <li>
-              Concepcionbury
-              <p>7643 Kylie Burgs</p>
+              <div className="li-img">
+                <img src={require('../assets/5.png')} alt={'3'} />
+              </div>
+              <div className="txt">
+                Concepcionbury
+                <p>7643 Kylie Burgs</p>
+              </div>
             </li>
             <li>
-              Reychester
-              <p>5590 Gabe Views Apt. 044</p>
+              <div className="li-img">
+                <img src={require('../assets/6.png')} alt={'3'} />
+              </div>
+              <div className="txt">
+                Reychester
+                <p>5590 Gabe Views Apt. 044</p>
+              </div>
             </li>
           </ul>
         </div>
