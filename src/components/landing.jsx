@@ -18,13 +18,13 @@ export default class Landing extends React.Component {
           </div>
           <img className="main_img" src={banner} alt={"banner"} />
         </div>
-        <div className="2nd-section">
-          <div>
+        <div className="second-section">
+          <div className="s2-left">
             <h2>What We Do</h2>
           </div>
 
-          <div>
-            <h3>We Do</h3>
+          <div className="s2-right">
+            <h3>We do</h3>
             <ul>
               <li>The quick, brown fox jumps over a lazy dog.</li>
               <li>DJs flock by when MTV ax quiz prog.</li>
@@ -34,9 +34,23 @@ export default class Landing extends React.Component {
           </div>
         </div>
 
-        <div className="3rd-section">
-          <div>Left</div>
-          <div>Right</div>
+        <div className="third-section">
+          <div className="s3-left">
+            <div className="s3-left-cont">
+              <div className="s3-img-cube">
+              </div>
+              <div className="s3-text">
+                <h4>Regional Cuisine Down Home Southern Cooking</h4>
+                  <p>The quick, brown fox jumps over a lazy dog.
+                    DJs flock by when MTV ax quiz prog.
+                    Junk MTV quiz graced by fox whelps.
+                    Bawds jog, flick quartz, vex nymphs.</p>
+              </div>
+            </div>
+          </div>
+          <div className="s3-right">
+            Right
+          </div>
         </div>
 
         <div className="4th-section">
