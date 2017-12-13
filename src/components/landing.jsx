@@ -107,7 +107,10 @@ export default class Landing extends React.Component {
 
         <div className="subscribe">
           <h4>Subscribe To Newsletter</h4>
-            <input type="text" name="" value="" />
+          <div className="form">
+            <input type="text" placeholder="Your Email" />
+            <button className="button" type="submit">Subscribe</button>
+            </div>
         </div>
 
         <div className="footer">

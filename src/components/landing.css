@@ -47,7 +47,7 @@ body {
 .second-section {
   display: flex;
   flex-direction: row;
-  height: 200px;
+  height: 250px;
 }
 
 .s2-left {
@@ -174,13 +174,13 @@ div.s3-right > div.s3-left-cont > div.s3-img-cube {
 }
 
 .fourth-section > ul > li:nth-child(1n+1){
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 div.li-img > img {
   width: 150px;
   height: 150px;
-  box-shadow: 0px 1px 10px 4px #0000000a;
+  box-shadow: 0px 1px 10px 4px #0000000f;
 }
 
 div.txt {
@@ -191,6 +191,60 @@ div.txt {
   font-weight: 500;
 }
 div.txt > p {
+  margin-top: 5px;
   font-size: 11px;
   font-weight: 300;
+}
+
+.subscribe {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.subscribe > h4 {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 60px 0px 40px 0px;
+  color: #e43c4b;
+}
+
+.form {
+  margin: 0px auto 60px auto;;
+  width: 320px;
+  position: relative;
+  display: flex;
+}
+
+.form > input {
+  outline: none;
+   width: 260px;;
+   height: 42px;
+   border-radius: 4px;
+   border: 1px solid #80808070;
+   left: 0;
+   padding-left: 10px;
+}
+
+.form > button {
+  width: 120px;
+  height: 46px;
+  border-radius: 50px;
+  position: absolute;
+  right: 0;
+  background-color: #1e3656;
+  color: white;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e3656;
+  height: 150px;
+  color: white;
+  font-size: 15px;
+  font-weight: 200;
 }
