@@ -49,13 +49,27 @@ export default class Landing extends React.Component {
             </div>
           </div>
           <div className="s3-right">
-            Right
+            <div className="s3-left-cont">
+              <div className="s3-img-cube">
+              </div>
+              <div className="s3-text">
+                <h4>Pos Hardware More Options In Less Space</h4>
+                  <p>The quick, brown fox jumps over a lazy dog.
+                    DJs flock by when MTV ax quiz prog.
+                    Junk MTV quiz graced by fox whelps.
+                    Bawds jog, flick quartz, vex nymphs.</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="4th-section">
+        <div className="fourth-section">
+          <h3>Maui By Air The Best Way Around The Island</h3>
           <ul>
             <li>
+              <div className="1li-img">
+                <img src={"../assets/3.png"} />
+              </div>
               East Josianefurt
               <p>085 Daron Via</p>
             </li>
