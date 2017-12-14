@@ -49,17 +49,27 @@ class Login extends React.Component {
       params.append('password', this.state.password);
       axios.post('http://dev3.apppartner.com/Reactors/scripts/user-login.php', params)
       .then((res) => {
-
-        // this.props.history.pop();
-        // this.props.history.push('/');
         this.setState({loggedIn: true,
                       currentUser: {
                           image: res.data.user_profile_image,
                           name: res.data.user_username,
           }
-        })
+        });
       });
     } else {
+      let params = new URLSearchParams();
+      params.append('email', this.state.email);
+      params.append('password', this.state.password);
+      params.append('username', this.state.username);
+      axios.post('http://dev3.apppartner.com/Reactors/scripts/user-signup.php', params)
+      .then((res) => {
+        this.setState({loggedIn: true,
+                      currentUser: {
+                          image: res.data.user_profile_image,
+                          name: res.data.user_username,
+          }
+        });
+      });
     }
   }
 
