@@ -7,14 +7,15 @@ import { Link, withRouter } from 'react-router-dom';
 class Landing extends React.Component {
 
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.location.pathname === nextProps.location.pathname){
-      return null;
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //   if(this.props.location.pathname === nextProps.location.pathname){
+  //     return null;
+  //   }
+  // }
 
 
   render(){
+    debugger
     return (
       <div>
         <div className="header">

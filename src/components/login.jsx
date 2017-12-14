@@ -2,6 +2,9 @@ import React from 'react';
 import './login.css';
 import './landing.css';
 import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
+import Landing from './landing.jsx';
+import { Redirect } from 'react-router';
 
 
 class Login extends React.Component {
@@ -9,34 +12,103 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      login: true
+      username: '',
+      email: '',
+      password: '',
+      loggedIn: false,
+      currentUser: {},
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.setState = this.setState.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
     if(this.props.location.pathname === nextProps.location.pathname){
-      return;
+      return null;
     }
   }
 
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
+
+
+  handleSubmit(e){
+    e.preventDefault();
+    if(this.props.location.pathname === "/login"){
+
+      let params = new URLSearchParams();
+      params.append('email', this.state.email);
+      params.append('password', this.state.password);
+      axios.post('http://dev3.apppartner.com/Reactors/scripts/user-login.php', params)
+      .then((res) => {
+
+        this.setState({loggedIn: true,
+                      currentUser: {
+                          image: res.data.user_profile_image,
+                          name: res.data.user_username,
+          }
+        })
+        debugger
+      });
+    } else {
+    }
+  }
 
   switcher(){
-    debugger
     if(this.props.location.pathname === "/login"){
       return(
         <div className="fields">
-          <input id="email" type="text" placeholder="Your Email" />
-          <input id="password" type="text" placeholder="Your Email" />
-          <button onSubmit={this.handleSubmit} >Login</button>
+          <form onSubmit={this.handleSubmit}>
+          <input
+            id="email"
+            type="text"
+            placeholder="email"
+            value={this.state.email}
+            onChange={this.update('email')}
+              />
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.update('password')}
+              />
+          <button type="submit">Login</button>
+          </form>
         </div>
       );
     } else if (this.props.location.pathname === "/signup") {
       return (
         <div className="fields">
-          <input id="username" type="text" placeholder="Username" />
-          <input id="email" type="text" placeholder="Email" />
-          <input id="password" type="text" placeholder="Password" />
-          <button onSubmit={this.handleSubmit} >Sign Up</button>
+          <form onSubmit={this.handleSubmit}>
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            value={this.state.username}
+            onChange={this.update('username')}
+            />
+          <input
+            id="email"
+            type="text"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.update('email')}
+            />
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.update('password')}
+            />
+          <button  >Sign Up</button>
+          </form>
         </div>
       );
     }
@@ -44,33 +116,45 @@ class Login extends React.Component {
 
 
   render(){
-    let style = this.props.location.pathname === "/login" ? "one" : "two";
-
-    return (
-      <div className="login">
-        <div className="login-content">
-          <div className="top-bar">
-            <Link to="/">
-              <div>Reactor</div>
-            </Link>
-          </div>
-
-          <div className="login-form">
-            <div className="log-block">
-              <div className="switcher">
-
-                <button id={style === "one" ? "one" : "none"}><Link to="/login">Login</Link></button>
-
-
-                <button id={style === "two" ? "two" : "none"}><Link to="/signup">Sign Up</Link></button>
-
+    let log, sign
+    if (this.props.location.pathname === "/login"){
+      log = "underline";
+      sign = "dim"
+    } else {
+      log = "dim";
+      sign = "underline"
+    }
+    debugger
+    if (this.state.loggedIn){
+      return(
+        <Landing
+          currentUser={this.state.currentUser} />
+      )
+    } else {
+      return (
+        <div className="login">
+          <div className="login-content">
+            <div className="top-bar">
+              <Link to="/">
+                <div>Reactor</div>
+                </Link>
               </div>
-              { this.switcher() }
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+
+              <div className="login-form">
+                <div className="log-block">
+                  <div className="switcher">
+                    <button id={log === "underline" ? "underline" : "dim"}><Link to="/login">Login</Link></button>
+
+                      <button id={sign === "underline" ? "underline" : "dim"}><Link to="/signup">Sign Up</Link></button>
+
+                      </div>
+                      { this.switcher() }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+    }
   }
 }
 
