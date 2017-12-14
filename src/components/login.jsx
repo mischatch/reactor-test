@@ -1,31 +1,42 @@
 import React from 'react';
 import './login.css';
 import './landing.css';
+import { Link, withRouter } from 'react-router-dom';
+
 
 class Login extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
-      login: false
+      login: true
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.location.pathname === nextProps.location.pathname){
+      return;
+    }
+  }
+
+
   switcher(){
-    if(this.props.login){
+    debugger
+    if(this.props.location.pathname === "/login"){
       return(
-        <div>
-          <input type="text" placeholder="Your Email" />
-          <input type="text" placeholder="Your Email" />
-          <input type="text" placeholder="Your Email" />
+        <div className="fields">
+          <input id="email" type="text" placeholder="Your Email" />
+          <input id="password" type="text" placeholder="Your Email" />
+          <button onSubmit={this.handleSubmit} >Login</button>
         </div>
       );
-    } else {
+    } else if (this.props.location.pathname === "/signup") {
       return (
-        <div>
-          <input type="text" placeholder="Your Email" />
-          <input type="text" placeholder="Your Email" />
-          <input type="text" placeholder="Your Email" />
+        <div className="fields">
+          <input id="username" type="text" placeholder="Username" />
+          <input id="email" type="text" placeholder="Email" />
+          <input id="password" type="text" placeholder="Password" />
+          <button onSubmit={this.handleSubmit} >Sign Up</button>
         </div>
       );
     }
@@ -33,21 +44,34 @@ class Login extends React.Component {
 
 
   render(){
+    let style = this.props.location.pathname === "/login" ? "one" : "two";
+
     return (
       <div className="login">
         <div className="login-content">
           <div className="top-bar">
-            <div>Reactor</div>
+            <Link to="/">
+              <div>Reactor</div>
+            </Link>
           </div>
 
           <div className="login-form">
-            <div className="switcher">
-            Login Sign Up
+            <div className="log-block">
+              <div className="switcher">
+
+                <button id={style === "one" ? "one" : "none"}><Link to="/login">Login</Link></button>
+
+
+                <button id={style === "two" ? "two" : "none"}><Link to="/signup">Sign Up</Link></button>
+
+              </div>
+              { this.switcher() }
             </div>
-            { switcher() }
           </div>
         </div>
       </div>
     )
   }
 }
+
+export default Login;

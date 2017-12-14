@@ -1,16 +1,31 @@
 import React from 'react';
 import './landing.css';
 import banner from '../assets/banner.png';
+import { Link, withRouter } from 'react-router-dom';
 
-export default class Landing extends React.Component {
+
+class Landing extends React.Component {
+
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.location.pathname === nextProps.location.pathname){
+      return null;
+    }
+  }
+
+
   render(){
     return (
       <div>
         <div className="header">
           <div className="header-content">
             <div className="top-bar">
-              <div>Reactor</div>
-              <div>Log In</div>
+              <Link to="/">
+                <div>Reactor</div>
+              </Link>
+              <Link to="/login">
+                <div>Log In</div>
+              </Link>
             </div>
             <div className="welcome">
               <h1>Hello, welcome to Reactor</h1>
@@ -121,3 +136,5 @@ export default class Landing extends React.Component {
     )
   }
 }
+
+export default Landing;
