@@ -12,10 +12,27 @@ class Landing extends React.Component {
   //     return null;
   //   }
   // }
+  loginOrUser(){
 
+    if(this.props.currentUser === undefined){
+      return(
+        <Link to="/login">
+          <div>Log In</div>
+        </Link>
+      )
+    } else {
+
+      return (
+        <div className="user">
+          <img src={this.props.currentUser.image} alt="user picture" />
+            <h4>Hello,<br/> {this.props.currentUser.name}!</h4>
+        </div>
+      )
+    }
+  }
 
   render(){
-    debugger
+
     return (
       <div>
         <div className="header">
@@ -24,9 +41,7 @@ class Landing extends React.Component {
               <Link to="/">
                 <div>Reactor</div>
               </Link>
-              <Link to="/login">
-                <div>Log In</div>
-              </Link>
+              {this.loginOrUser()}
             </div>
             <div className="welcome">
               <h1>Hello, welcome to Reactor</h1>

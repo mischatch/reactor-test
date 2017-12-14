@@ -248,3 +248,22 @@ div.txt > p {
   font-size: 15px;
   font-weight: 200;
 }
+
+div.user {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.user > img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  margin-left: 20px;
+}
+
+.user > h4 {
+  color: white;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: right;
+}

@@ -16,7 +16,10 @@ class Login extends React.Component {
       email: '',
       password: '',
       loggedIn: false,
-      currentUser: {},
+      currentUser: {
+        image: '',
+        name: '',
+      },
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,13 +50,14 @@ class Login extends React.Component {
       axios.post('http://dev3.apppartner.com/Reactors/scripts/user-login.php', params)
       .then((res) => {
 
+        // this.props.history.pop();
+        // this.props.history.push('/');
         this.setState({loggedIn: true,
                       currentUser: {
                           image: res.data.user_profile_image,
                           name: res.data.user_username,
           }
         })
-        debugger
       });
     } else {
     }
@@ -124,7 +128,7 @@ class Login extends React.Component {
       log = "dim";
       sign = "underline"
     }
-    debugger
+
     if (this.state.loggedIn){
       return(
         <Landing
