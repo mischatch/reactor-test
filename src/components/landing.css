@@ -71,6 +71,7 @@ div.s2-left > h2 {
   flex-direction: column;
   line-height: 2;
   color: #413d3d;
+  text-align: left;
 }
 div.s2-right > ul {
   font-size: 12px;
@@ -236,6 +237,10 @@ div.txt > p {
   right: 0;
   background-color: #1e3656;
   color: white;
+}
+
+.subscribe > h5 {
+  margin: -46px auto 30px auto;
 }
 
 .footer {

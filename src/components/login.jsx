@@ -42,7 +42,7 @@ class Login extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    if(this.props.location.pathname === "/login"){
+    if(this.props.location.pathname === "/login"){              //Login
 
       let params = new URLSearchParams();
       params.append('email', this.state.email);
@@ -57,7 +57,7 @@ class Login extends React.Component {
         });
       });
     } else {
-      let params = new URLSearchParams();
+      let params = new URLSearchParams();                     //sign up
       params.append('email', this.state.email);
       params.append('password', this.state.password);
       params.append('username', this.state.username);

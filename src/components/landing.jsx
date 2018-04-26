@@ -2,9 +2,21 @@ import React from 'react';
 import './landing.css';
 import banner from '../assets/banner.png';
 import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 
 class Landing extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      subscribed: false,
+      email: '',
+    };
+
+    this.setState = this.setState.bind(this);
+    this.subscribe = this.subscribe.bind(this);
+  }
 
 
   // componentWillReceiveProps(nextProps){
@@ -12,6 +24,31 @@ class Landing extends React.Component {
   //     return null;
   //   }
   // }
+
+  subscribe(){
+    let params = new URLSearchParams();                     //subscribe
+    params.append('email', this.state.email);
+    axios.post('http://dev3.apppartner.com/Reactors/scripts/add-email.php', params)
+    .then((res) => {
+      this.setState({subscribed: true,
+      });
+    });
+  }
+
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
+  }
+
+  subscribed(){
+    if (this.state.subscribed){
+      return(
+        <h5>You have been successfully subscribed!</h5>
+      )
+    }
+  }
+
   loginOrUser(){
 
     if(this.props.currentUser === undefined){
@@ -138,10 +175,17 @@ class Landing extends React.Component {
 
         <div className="subscribe">
           <h4>Subscribe To Newsletter</h4>
-          <div className="form">
-            <input type="text" placeholder="Your Email" />
+          <form className="form" onSubmit={this.subscribe}>
+            <input
+              type="text"
+              placeholder="Your Email"
+              value={this.state.email}
+              onChange={this.update('email')}
+              />
             <button className="button" type="submit">Subscribe</button>
-            </div>
+          </form>
+          {this.subscribed()}
+
         </div>
 
         <div className="footer">
